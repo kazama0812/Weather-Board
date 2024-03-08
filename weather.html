@@ -15,14 +15,40 @@
 
     <div id="todayData">
       今日の天気:<span id="weather" class="weatherData"></span> 
-      <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="天気アイコン">
-</br></br>
-      降水確率:<span id="chanceOfRain" class="weatherData"></span>％</br></br>
-      最高気温<span id="maxtemp"></span>度</br>
-      最低気温<span id="mintemp"></span>度</br>
-      平均気温<span id="avgtemp"></span>度</br>
-      最大風速　<span id="maxwind"></span>km/秒</br>
-      平均湿度<span id="avghumidity"></span>度</br>
+      <img id="weatherIcon" src=""></br></br>
+      <table>
+        <tr>
+          <td>降水確率</td>
+          <td><span id="chanceOfRain" class="weatherData"></span>％</td>
+        </tr>
+        <tr>
+          <td>最高気温</td>
+          <td><span id="maxtemp"></span>度</td>
+        </tr>
+        <tr>
+          <td>最低気温</td>
+          <td><span id="mintemp"></span>度</td>
+        </tr>
+        <tr>
+          <td>平均気温</td>
+          <td><span id="avgtemp"></span>度</td>
+        </tr>
+        <tr>
+          <td>最大風速</td>
+          <td><span id="maxwind"></span>km/秒</td>
+        </tr>
+        <tr>
+          <td>平均湿度</td>
+          <td><span id="avghumidity"></span>度</td>
+        </tr>
+        <tr>
+          <td>UV</td>
+          <td><span id="uv"></span></td>
+        </tr>
+      </table>
+
+      １時間後の天気:<span id="hourAfterWeather"></span></br>
+      明日の天気:<span id="tommorowWeather"></span></br>
 
       距離<span id="distance"></span></br></br>
     </div>

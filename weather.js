@@ -1,17 +1,15 @@
 let obniz = new Obniz("0900-9155");  //自分のobnizの番号に書き換えて下さい
 /*  ②ここに必要な変数宣言を書きます  */
-let led1, led2, led3, distSensor,fLED;
-
+let led1, led2, led3, distSensor;
 
 obniz.onconnect = async function () {
   /*  ③ここに様々なJavaScriptの処理を書きます  */
   led1 = obniz.wired("LED", {anode: 0, cathode: 1});
-  //led2 = obniz.wired("LED", {anode: 2, cathode: 3});
-  //led3 = obniz.wired("LED", {anode: 4, cathode: 5});
+  led2 = obniz.wired("LED", {anode: 2, cathode: 3});
+  led3 = obniz.wired("LED", {anode: 4, cathode: 5});
   distSensor = obniz.wired("GP2Y0A21YK0F",{vcc:6, gnd:7, signal:8});
   //距離センサー　赤が６。黒が７、黄色が８
-  fLED = obniz.wired("WS2811", {gnd:2, vcc:3, din:4});
-  
+
 
   //対象物までの距離が変化した時
   distSensor.start( function( distance ){
@@ -54,11 +52,19 @@ obniz.onconnect = async function () {
         let avghumidity = data[0].day.avghumidity;
         $("#avghumidity").text(avghumidity);
 
+        //UV
+        let uv = data[0].day.uv;
+        $("#uv").text(uv);
 
+        // 1時間後の天気
+        let hourAfterWeather = data[0].hour[0].condition.text;
+        $("#hourAfterWeather").text(hourAfterWeather);
 
-
-
+        //明日の天気
+        let tommorowWeather = data[1].day.condition.text;
+        $("#tommorowWeather").text(tommorowWeather);
         
+ 
         //obnizのディスプレイに天気表示
         obniz.display.clear();
         obniz.display.pos(0, 0);
@@ -83,14 +89,11 @@ obniz.onconnect = async function () {
         }
         //天気予報に「曇り」という文字列が含まれていれば
         else if(weather.indexOf("曇り") != -1){
-          fLED.rgbs([
-            [255, 255, 255]
-            // 追加の配列要素をここに追加することも可能
-          ]);
-          //led2.on();
+        // fLED.rgb(0, 0, 0); 
+          led2.on();
           console.log("led2");
           await obniz.wait(60000);     //60秒待つ 
-          //led2.off();
+          led2.off();
         } 
 
         //天気予報に「晴れ」という文字列が含まれていれば
@@ -103,6 +106,8 @@ obniz.onconnect = async function () {
         } 
 
         } 
+
+
       );
     } 
   }
