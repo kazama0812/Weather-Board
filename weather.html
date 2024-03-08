@@ -1,0 +1,31 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <script src="https://unpkg.com/obniz@3.24.0/obniz.js"></script>
+  <script type="text/javascript" src="./weather.js">  </script>
+  <link rel="stylesheet" href="./weather.css">
+</head>
+<body>
+  <div id="dispArea"></div>
+  <div id="obniz-debug"></div>
+  <h1>Weather Board</h1>
+  <div id="data">
+    <h2>横浜市</h2>
+
+    <div id="todayData">
+      今日の天気:<span id="weather" class="weatherData"></span> 
+      <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="天気アイコン">
+</br></br>
+      降水確率:<span id="chanceOfRain" class="weatherData"></span>％</br></br>
+      最高気温<span id="maxtemp"></span>度</br>
+      最低気温<span id="mintemp"></span>度</br>
+      平均気温<span id="avgtemp"></span>度</br>
+      最大風速　<span id="maxwind"></span>km/秒</br>
+      平均湿度<span id="avghumidity"></span>度</br>
+
+      距離<span id="distance"></span></br></br>
+    </div>
+  </div>
+</body>
+</html>
